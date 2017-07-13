@@ -3,6 +3,7 @@ package service;
 import config.AppConfig;
 import org.junit.Test;
 import request.Auth;
+import response.TranslateResponse;
 import response.naver.NaverResponse;
 import service.impl.LanguageCheckerImpl;
 import service.impl.NaverRestTemplateImpl;
@@ -24,7 +25,7 @@ public class NaverRestTemplateTest {
         NaverRestTemplateImpl restTemplate = new NaverRestTemplateImpl();
         Auth auth = Auth.newNaverInstance(AppConfig.getNaverClientId(), AppConfig.getNaverClientSecret());
         String requestBody = "source=ko&target=en&text=번역";
-        NaverResponse result = restTemplate.requestTranslate(requestBody, auth);
+        TranslateResponse result = restTemplate.requestTranslate(requestBody, auth);
 
         //then
         assertThat(result.getTranslatedText(), is("translation"));
